@@ -1,0 +1,42 @@
+/* Navigation.css */
+
+.navbar {
+    background-color: #acacac; 
+}
+
+.navbar .navbar-brand {
+    font-size: 22px;
+    color: #03AC13 ; 
+    font-weight: bold;        
+}
+
+.navbar .navbar-brand:hover {
+    color: #03AC13;
+}
+
+.navbar .nav-link {
+    font-size: 18px;
+    color: #465945 ; 
+    font-weight: bold;        
+}
+
+
+.navbar .nav-link:hover {
+    color: #ffffff ; 
+}
+
+
+.navbar .dropdown-menu {
+    background-color: #acacac;
+}
+
+.navbar .dropdown-item {
+    font-size: 18px;
+    color: #465945 ;
+    font-weight: bold;     
+}
+
+.navbar .dropdown-item:hover {
+    color: #ffffff; 
+    background-color: #acacac;
+}
