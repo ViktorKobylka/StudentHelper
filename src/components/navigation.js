@@ -11,10 +11,13 @@ const Navigation = () => {
             <Navbar.Brand href="/">Student Helper</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="/schedule">Schedule</Nav.Link>
-              <Nav.Link href="/subjects">Subjects</Nav.Link>
+              <NavDropdown title="Subjects" id="students-dropdown">
+                <NavDropdown.Item href="/subjectList">List of subjects</NavDropdown.Item>
+                <NavDropdown.Item href="/subjectAdd">Add subject</NavDropdown.Item>
+              </NavDropdown>
               <NavDropdown title="Student Notes" id="students-dropdown">
                 <NavDropdown.Item href="/studentNotes">List of notes</NavDropdown.Item>
-                <NavDropdown.Item href="/addStudentNotes">Add a note</NavDropdown.Item>
+                <NavDropdown.Item href="/addStudentNotes">Add note</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Container>

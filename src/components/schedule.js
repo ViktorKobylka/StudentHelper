@@ -1,7 +1,7 @@
 const Schedule = ()=>{
     return(
         <div>
-            <h1>Schedule</h1>
+            <h1>schedule</h1>
             
         </div>
     );
