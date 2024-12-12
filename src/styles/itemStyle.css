@@ -1,0 +1,61 @@
+/* itemStyle.css */
+
+.itemStyle-cont {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+  }
+  
+  .itemStyle-cont h3 {
+    font-size: 24px;
+    color: #03AC13;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .itemStyle-cont p {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #555555;
+  }
+  
+  .item-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .btn-edit {
+    background-color: #acacac;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  
+  .btn-edit:hover {
+    background-color: #465945 ;
+    color: #fff;
+  }
+  
+  .btn-delete {
+    background-color: #E3242B;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .btn-delete:hover {
+    background-color: #b50006;
+    color: #fff;
+  }
+  

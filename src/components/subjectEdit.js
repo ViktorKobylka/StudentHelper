@@ -1,34 +1,57 @@
-//import libraries, the css file for the subject add
+//import libraries, the css file for the subject edit
 import '../styles/itemAdd.css';
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-//SubjectAdd component: displays form for adding a new subject
-const SubjectAdd = () => {
-
+//SubjectEdit component: displays form for editing a subject
+const SubjectEdit = () =>  {
+    //extract subject ID from the URL
+    const {id} = useParams();
     //state variables for form fields
     const [name, setName] = useState('');
     const [time, setTime] = useState('');
     const [day, setDay] = useState('');
+    //hook for the navigation after editing
+    const navigate = useNavigate();
 
     //check if all form fields are filled
     const checkFormEmpty = name !== "" && time !== "" && day !== "";
+
+    //fetch subject data when the component is loaded or ID changes
+    useEffect(()=>{
+        axios.get('http://localhost:4000/api/subject/'+id)
+        .then((res)=>{
+            console.log("sucess "+res.data);
+            //set initial values for the form
+            setName(res.data.name);
+            setTime(res.data.time);
+            setDay(res.data.day);
+        })
+        .catch((err)=>{console.log(err)});
+    },[id]);
 
     //handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         const subject = {name,time,day};
-        //send POST request to server
-        axios.post('http://localhost:4000/api/subjects',subject);
-        //Clear fields
-        setName('');
-        setTime('');
-        setDay('');
+
+        //send PUT request to update the subject
+        axios.put('http://localhost:4000/api/subject/'+id, subject)
+        .then((res)=>{
+            console.log("Edited: "+res.data);
+            navigate('/subjectList');
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
+      
     }
 
     return (
         <div className="itemAdd-cont">
-            <h3>Create new subject</h3>
+            <h3>Edit current subject</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Please enter name of subject: </label>
@@ -66,11 +89,11 @@ const SubjectAdd = () => {
                     </div>
                 </div>
                 <div>
-                    <input type="submit" value="Add subject" 
+                    <input type="submit" value="Add Subject" 
                     disabled={!checkFormEmpty} id="disabledSubmit"></input>
                 </div>
             </form>
         </div>
     );
 }
-export default SubjectAdd;
+export default SubjectEdit;

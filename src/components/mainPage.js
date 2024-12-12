@@ -1,5 +1,7 @@
+//import the css file for the main page
 import '../styles/mainPage.css';
 
+//MainPage component: represents the landing page of the "Student Helper" website
 const MainPage = ()=>{
     return(
         <div className="mainPage-cont">

@@ -1,34 +1,57 @@
-//import libraries, the css file for the note add
+//import libraries, the css file for the note edit
 import '../styles/itemAdd.css';
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-//AddStudentNotes component: displays form for adding a new note
-const AddStudentNotes = () => {
-
+//NoteEdit component: displays form for editing a note
+const NoteEdit = () =>  {
+    //extract note ID from the URL
+    const {id} = useParams();
     //state variables for form fields
     const [name, setName] = useState('');
     const [text, setText] = useState('');
     const [day, setDay] = useState('');
+    //hook for the navigation after editing
+    const navigate = useNavigate();
 
     //check if all form fields are filled
     const checkFormEmpty = name !== "" && text !== "" && day !== "";
 
+    //fetch note data when the component is loaded or ID changes
+    useEffect(()=>{
+        axios.get('http://localhost:4000/api/note/'+id)
+        .then((res)=>{
+            console.log("sucess "+res.data);
+            //set initial values for the form
+            setName(res.data.name);
+            setText(res.data.text);
+            setDay(res.data.day);
+        })
+        .catch((err)=>{console.log(err)});
+    },[id]);
+
     //handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        const subject = {name,text,day};
-        //send POST request to server
-        axios.post('http://localhost:4000/api/notes',subject);
-        //Clear fields
-        setName('');
-        setText('');
-        setDay('');
+        const note = {name,text,day};
+
+        //send PUT request to update the note
+        axios.put('http://localhost:4000/api/note/'+id, note)
+        .then((res)=>{
+            console.log("Edited: "+res.data);
+            navigate('/studentNotes');
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
+      
     }
 
     return (
         <div className="itemAdd-cont">
-            <h3>Create new note</h3>
+            <h3>Edit new note</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Please enter name of your note: </label>
@@ -66,4 +89,4 @@ const AddStudentNotes = () => {
         </div>
     );
 }
-export default AddStudentNotes;
+export default NoteEdit;
