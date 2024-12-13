@@ -51,7 +51,7 @@ const NoteEdit = () =>  {
 
     return (
         <div className="itemAdd-cont">
-            <h3>Edit new note</h3>
+            <h3>Edit current note</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Please enter name of your note: </label>
