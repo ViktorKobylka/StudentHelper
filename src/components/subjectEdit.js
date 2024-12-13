@@ -89,7 +89,7 @@ const SubjectEdit = () =>  {
                     </div>
                 </div>
                 <div>
-                    <input type="submit" value="Add Subject" 
+                    <input type="submit" value="Edit Subject" 
                     disabled={!checkFormEmpty} id="disabledSubmit"></input>
                 </div>
             </form>

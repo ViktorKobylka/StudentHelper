@@ -82,7 +82,7 @@ const NoteEdit = () =>  {
                     </div>
                 </div>
                 <div>
-                    <input type="submit" value="Add the note" 
+                    <input type="submit" value="Edit the note" 
                     disabled={!checkFormEmpty} id="disabledSubmit"></input>
                 </div>
             </form>
